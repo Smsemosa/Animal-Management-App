@@ -1,0 +1,16 @@
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\ShalomFarmCoreApp\DatabaseAccessLayer\bin\Debug\DatabaseAccessLayer.dll
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\ShalomFarmCoreApp\DatabaseAccessLayer\bin\Debug\DatabaseAccessLayer.pdb
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\ShalomFarmCoreApp\DatabaseAccessLayer\obj\Debug\DatabaseAccessLayer.dll
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\ShalomFarmCoreApp\DatabaseAccessLayer\obj\Debug\DatabaseAccessLayer.pdb
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\ShalomFarmCoreApp\DatabaseAccessLayer\bin\Debug\DatabaseAccessLayer.dll.config
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\ShalomFarmCoreApp\DatabaseAccessLayer\bin\Debug\EntityFramework.dll
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\ShalomFarmCoreApp\DatabaseAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\ShalomFarmCoreApp\DatabaseAccessLayer\bin\Debug\EntityFramework.xml
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\ShalomFarmCoreApp\DatabaseAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\ShalomFarmCoreApp\DatabaseAccessLayer\obj\Debug\DatabaseAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\DatabaseAccessLayer\bin\Debug\DatabaseAccessLayer.dll.config
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\DatabaseAccessLayer\bin\Debug\DatabaseAccessLayer.dll
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\DatabaseAccessLayer\bin\Debug\DatabaseAccessLayer.pdb
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\DatabaseAccessLayer\obj\Debug\DatabaseAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\DatabaseAccessLayer\obj\Debug\DatabaseAccessLayer.dll
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\DatabaseAccessLayer\obj\Debug\DatabaseAccessLayer.pdb

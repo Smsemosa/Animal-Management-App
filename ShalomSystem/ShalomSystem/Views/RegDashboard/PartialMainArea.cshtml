@@ -1,0 +1,293 @@
+﻿@model ShalomSystem.Models.MyViewModel
+@using ShalomSystem;
+@using System.Drawing;
+@using System;
+@using System.IO;
+@using BusinessEntities;
+
+   @{
+       string imageDataURL = Model.cattleInfo.CImagePath;
+ }
+
+        @{
+            int TempID = 0;
+            GenderEnum gender = GenderEnum.Not_Sure;
+        }    
+<form class="form" id="MainArea">
+            <h3>
+                                <p>Animal Infomation </p>
+                            </h3>
+                    <div class="row">
+
+                        @*first column*@
+                        <div class="col-lg-3">
+                   
+                            <div class="form-group">
+                                <p>Animal ID<span>*</span></p>
+
+                                <input  class="form-control" readonly="" type="text" name="nom" id="AID" data-rule="required" value="@Model.cattleInfo.AId"/>
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Cattle ID  <span></span></p>
+                                @*<span class="icon-case"><i class="fa fa-user"></i></span>*@
+                                <input  class="form-control"  readonly="" type="text" name="prenom" id="prenom" data-rule="required"  value="@Model.cattleInfo.CId"/>
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Breed Type  <span></span></p>
+                                @*<span class="icon-case"><i class="fa fa-envelope-o"></i></span>*@
+                                <input  class="form-control"  readonly=""  type="email" name="email" id="email" data-rule="email" value="@Model.cattleInfo.ABreed" />
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Gender(Sex)<span>*</span></p>
+                                @*<span class="icon-case"><i class="fa fa-home"></i></span>*@
+                                <input  class="form-control"  readonly="" type="text" name="society" id="society" data-rule="required"  value="@Model.cattleInfo.AGender"/>
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Age  <span></span></p>
+                                @*<span class="icon-case"><i class="fa fa-location-arrow"></i></span>*@
+                                <input  class="form-control"   readonly=""  type="text" name="adresse" id="adresse" data-rule="required" value="@Model.cattleInfo.AAge"/>
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Date of Birth  <span></span></p>
+
+
+                                <input  class="form-control"  readonly="" type="text" name="postal" id="postal" data-rule="required" value="@Model.cattleInfo.ADOB.Date"/>
+                                <div class="validation"></div>
+                            </div>
+
+
+
+                        </div>
+
+                        @*second column*@
+                        <div class="col-lg-3" style="background-color: none">
+                           
+
+
+                            <div class="form-group">
+                                <p>Colour<span></span></p>
+
+
+                                <select id="CColor" class="form-control" data-style="btn-warning">
+                                    <option value="@Model.cattleInfo.CColor">@Model.cattleInfo.CColor</option>
+
+                                </select>
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Scrotal Size (cm)<span></span></p>
+
+                                <input class="form-control" type="text"  readonly="" name="sujet" id="sujeet" data-rule="required"  value="@Model.cattleInfo.CScotralSize" />
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Status  <span></span></p>
+
+                                <select id="Status" class="form-control" data-style="btn-warning">
+                                    <option value="@Model.cattleInfo.Status">@Model.cattleInfo.Status</option>
+
+                                </select>
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Breeding Status  <span></span></p>
+
+
+                                <select id="test-period" class="form-control" data-style="btn-warning">
+                                    <option value="@Model.cattleInfo.CBreedingStatus">@Model.cattleInfo.CBreedingStatus</option>
+
+                                </select>
+
+
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Parent Identification   <span>[Father]</span></p>
+
+                                <input  class="form-control"  readonly="" type="text" name="fonction" id="function" data-rule="required"    value="@Model.cattleInfo.CParentFId"/>
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                  <p>Parent Identification <span>[Mther]</span></p>
+
+                                <input  class="form-control"  readonly="" type="text" name="sujet" id="sujret" data-rule="required" value="@Model.cattleInfo.CParentMId" />
+                                <div class="validation"></div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-6" style="background-color: none">
+
+                            <div class="row">
+                               
+                                <div class="form-group">
+                                    <p>Profile Picture  <span></span></p>
+
+
+                                    <img src="@imageDataURL"   class="img-responsive"  style="max-width:500px;max-height:400px;min-width:500px;min-height:380px"  />
+
+
+
+
+                                    <div class="validation"></div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-lg-4">
+                                                        <div class="form-group">
+                                <p>Frame Size  <span></span></p>
+
+                                <input class="form-control" type="text" name="fonction" id="fondction" data-rule="required" value="@Model.cattleInfo.CFrameSize"/>
+                                <div class="validation"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="row" style="background-color: none">
+                        <div class="col-lg-3">
+
+
+                            <p style="color: orangered;">WEIGHT <span></span></p>
+                            <div class="form-group">
+                                <p>Birth(kg) <span></span></p>
+
+                                <input class="form-control" type="text" name="sujet" id="sujeet" data-rule="required" value="@Model.cattleInfo.CBirthWeight"  />
+                                <div class="validation"></div>
+                            </div>
+                            <div class="form-group">
+                                <p>Weaning(kg) [200d] <span></span></p>
+
+                                <input class="form-control" type="text" name="sujet" id="sujeet" data-rule="required" value="@Model.cattleInfo.CWeaningWeight" />
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Post Weaning (kg) [400d]  <span></span></p>
+
+                                <input class="form-control" type="text" name="sujet" id="sujeet" data-rule="required" value="@Model.cattleInfo.CPostWeaningWeight" />
+                                <div class="validation"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+
+                             <p style="color: orangered;">_ <span></span></p>
+                            <div class="form-group">
+                                <p>Adult 600 Day Weight  (kg) <span></span></p>
+
+                                <input class="form-control" type="text" name="sujet" id="sujeet" data-rule="required"  value="@Model.cattleInfo.CAdultSxWeight" />
+                                <div class="validation"></div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <p>Current Adult Weight  (kg)  <span></span></p>
+
+                                <input class="form-control" type="text" name="sujet" id="sujeet" data-rule="required"  value="@Model.cattleInfo.CCurrentAdultWeight" />
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Current  Weight Date Taken   <span></span></p>
+
+                                <input class="form-control" type="text" name="sujet" id="sujeet" data-rule="required"  value="@Model.cattleInfo.CCurrentWeightDateTaken" />
+                                <div class="validation"></div>
+                            </div>
+
+                            
+
+
+                        </div>
+
+                        <div class="col-lg-2"">
+                           <p style="color: orangered;">Progeny <span></span></p>
+                            <p>Progeny Records   <span></span></p>
+                            <div class="list-group"  style="overflow: auto ;max-height:210px;">
+                          
+
+                                @{ Cattle off = Model.cattleInfo;
+                                   foreach (var offspringdata in off.COffSpring)
+                                   {
+                                        <a href="#" class="list-group-item" title="@offspringdata.ABreed @offspringdata.AGender">@offspringdata.AId</a>
+                                   }
+                                 }
+                              
+                            </div>
+                        </div>
+                         <div class="col-lg-4">
+                              <p style="color: orangered;">Diagnoses <span></span></p>
+                         
+                             <p>Diagnoses Record   <span></span></p>
+                             <textarea class="form-control" rows"5" id="comment"></textarea>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        
+
+                        <h5>
+                            <p>Owner Information</p>
+                        </h5>
+                        <div class="form-group" style="display: none">
+                            <p>Owner Identification Number  <span></span></p>
+
+                            <input  class="form-control" type="text" name="fonction" id="fonction" data-rule="required"  value="@Model.cattleInfo.OId" />
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Owner ID  <span></span></p>
+
+                            
+                                <input class="form-control" type="text" name="sujet" id="sujet" data-rule="required"   value="@Model.cattleInfo.PId"/>
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Owner Name  <span></span></p>
+
+                                <input class="form-control" type="text" name="ville" id="ville" data-rule="required"   value="@Model.cattleInfo.PName"/><input  class="form-control" type="text" name="phone" id="phone"   value="@Model.cattleInfo.PSurname"/>
+                            <div class="validation"></div>
+                        </div>
+
+                        <div style="padding-bottom: 120px">
+                            <pre>
+
+                                                   </pre>
+                        </div>
+                    </div>
+ </form>
+<script>
+    $(document).ready(function ()
+    {
+        
+        $("#AidCurrent").val("" + $("#AID").val());
+       // alert("partial welcome");
+
+    });
+  
+</script>

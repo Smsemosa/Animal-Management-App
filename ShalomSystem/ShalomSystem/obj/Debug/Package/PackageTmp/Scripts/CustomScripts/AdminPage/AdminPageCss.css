@@ -1,0 +1,42 @@
+﻿.myCustomHeader{
+      	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #006dcc;
+	*background-color: #0044cc;
+	background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+	background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+	background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+	background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+	background-repeat: repeat-x;
+	border-color: #0044cc #0044cc #002a80;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+                color:white;text-align:center;
+}
+.AllAnimalList 
+{
+    background-color:gray;
+    color:white !important;
+    text-decoration-color:white !important;
+    text-align:center;
+    border-bottom:solid;
+    border-top:solid;
+    border-bottom-color:white;
+    border-top-color:white;
+    font-size:large;
+    font-weight:600;
+      border-top-left-radius: 0px !important;
+      border-top-right-radius: 0px !important;
+                                                border-bottom-right-radius: 0px !important;
+                                                border-bottom-left-radius: 0px !important;
+}
+.AllAnimalList:hover
+{
+    
+    color:orangered !important;
+    text-decoration-color:orangered !important;
+    text-align:center;
+
+}

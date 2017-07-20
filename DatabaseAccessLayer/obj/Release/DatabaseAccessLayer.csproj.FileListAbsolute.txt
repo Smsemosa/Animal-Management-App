@@ -1,0 +1,6 @@
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\DatabaseAccessLayer\bin\Release\DatabaseAccessLayer.dll.config
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\DatabaseAccessLayer\bin\Release\DatabaseAccessLayer.dll
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\DatabaseAccessLayer\bin\Release\DatabaseAccessLayer.pdb
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\DatabaseAccessLayer\obj\Release\DatabaseAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\DatabaseAccessLayer\obj\Release\DatabaseAccessLayer.dll
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\DatabaseAccessLayer\obj\Release\DatabaseAccessLayer.pdb

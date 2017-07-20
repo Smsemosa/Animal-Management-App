@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShalomSystem", "ShalomSystem\ShalomSystem.csproj", "{CF3642C9-FE40-4332-9C6B-842D865FCA44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessEntities", "..\Business Entities\BusinessEntities.csproj", "{EFBE77BD-C90A-402C-B42D-D460A8561C92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseAccessLayer", "..\DatabaseAccessLayer\DatabaseAccessLayer.csproj", "{949DE9DE-545B-4E34-B222-B89D7FAAD92A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF3642C9-FE40-4332-9C6B-842D865FCA44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF3642C9-FE40-4332-9C6B-842D865FCA44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF3642C9-FE40-4332-9C6B-842D865FCA44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF3642C9-FE40-4332-9C6B-842D865FCA44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFBE77BD-C90A-402C-B42D-D460A8561C92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFBE77BD-C90A-402C-B42D-D460A8561C92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFBE77BD-C90A-402C-B42D-D460A8561C92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFBE77BD-C90A-402C-B42D-D460A8561C92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{949DE9DE-545B-4E34-B222-B89D7FAAD92A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{949DE9DE-545B-4E34-B222-B89D7FAAD92A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{949DE9DE-545B-4E34-B222-B89D7FAAD92A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{949DE9DE-545B-4E34-B222-B89D7FAAD92A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

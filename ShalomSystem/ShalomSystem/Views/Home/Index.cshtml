@@ -1,0 +1,341 @@
+﻿<link href="~/Scripts/HomePageCss/HomeP.css" rel="stylesheet" />
+<div class="navbar navbar-fixed-top" style="  background-color:  #eee; 
+ border-bottom:solid;border-bottom-color:orangered;">
+    @Html.Partial("~/Views/Shared/SharedPartialViewMenus/_PartialHomeMenu.cshtml")
+    Connection State :: @ViewBag.Title
+</div>
+
+ <div class="carousel slide" id="myCarousel">
+
+        @*wrapper for the slides*@
+
+        <ol>
+            <li class="active" data-slide-to="0" data-target="#myCarousel"></li>
+            <li data-slide-to="1" data-target="#myCarousel"></li>
+            <li data-slide-to="2" data-target="#myCarousel"></li>
+
+        </ol>
+     <div class="carousel-inner">
+            <div class="item active" id="slide1">
+                @*<img src="~/Images/SlideShow/S1.jpg" />*@
+
+                <div class="carousel-caption">
+                    <h4>Boot S 3</h4>
+                    <div><h3>qui·e·tude</h3></div>
+                    <p>The beginning</p>
+                </div>
+            </div>
+         </div>
+
+      @*  <div class="carousel-inner">
+            <div class="item active" id="slide1">
+                <img src="~/Images/SlideShow/S1.jpg" />
+
+                <div class="carousel-caption">
+                    <h4>Boot S 3</h4>
+                    <div><h3>qui·e·tude</h3></div>
+                    <p>The beginning</p>
+                </div>
+            </div>
+
+            <div class="item" id="slide2">
+
+                <img src="~/Images/SlideShow/S2.jpg" />
+
+                <div class="carousel-caption">
+                    <h4>Boot S 3</h4>
+                    <p>The Second</p>
+                </div>
+            </div>
+
+            <div class="item" id="slide3">
+                <img src="~/Images/SlideShow/S3.jpg" />
+
+                <div class="carousel-caption">
+                    <h4>Boot S 3</h4>
+                    <p>The Second</p>
+                </div>
+            </div>
+            <a id ="nextbtn" class="left carousel-control" data-slide="prev" href="#myCarousel"><span class="icon-prev"></span></a>
+            <a class="right carousel-control" data-slide="next" href="#myCarousel"><span class="icon-next"></span></a>
+
+        </div>*@
+
+                          <script src="~/Scripts/SlideShow/modernizr.custom.86080.js"></script>
+                          <link href="~/Scripts/SlideShow/SlideShow.css" rel="stylesheet" />
+                          <ul class="cb-slideshow" >
+                            <li><span class="row"> 111</span><div><h3>re·lax·a·tion</h3></div></li>
+                            <li><span class="row" >Image 02</span><div><h3>qui·e·tude</h3></div></li>
+                            <li><span>Image 03</span><div><h3>bal·ance</h3></div></li>
+                            <li><span>Image 04</span><div><h3>e·qua·nim·i·ty</h3></div></li>
+                            <li><span>Image 05</span><div><h3>com·po·sure</h3></div></li>
+                            <li><span>Image 06</span><div><h3>se·ren·i·ty</h3></div></li>
+               
+                        </ul>
+        <a id ="nextbtn" class="left carousel-control" data-slide="prev" href="#myCarousel"><span class="icon-prev"></span></a>
+            <a class="right carousel-control" data-slide="next" href="#myCarousel"><span class="icon-next"></span></a>
+
+    </div> @*end of slide show carousel*@
+
+
+<style>
+    #myCarousel {
+        height: 400px;
+        margin-top: 8%;
+    }
+
+    #slide1 {
+        background: url('../../Images/SlideShow/S8.jpg') top center no-repeat;
+    }
+</style>
+
+
+
+
+
+
+
+<div class="container" id="mainn">
+
+    <div class ="positioning " id="LoginFormP">
+
+    </div>
+
+
+    <div class="row" id="InfoCenter">
+
+        <div class="col-lg-3" >
+                <div class="animal_holder">
+                                        <div class="animal_name">
+                                            Brahman cattle
+                                        </div>
+                                        <div class="animal_images">
+
+                                            <div class="animal_photo">
+                                                <a href="" title="BRAHMAN BULL">
+                                                    <img src="~/Images/HomePageImages/H1.png" style="border-radius: 50%;margin-left: 0% ;"  height="auto"; alt="Brahman Cattle"></a>
+
+                                            </div>
+
+                                            <div class="animal_graph">
+                                            </div>
+                                        </div>
+                                        <div class="animal_add_info">
+                                            <p>The best Breed For Hot conditions</p>
+                                        </div>
+                 </div>
+        </div>
+    
+        <div class="col-lg-3">
+                 <div class="animal_holder" style="margin-bottom: 10px;width:200px">
+
+
+                                    <div class="animal_name">
+                                        Boer Goats
+                                    </div>
+
+
+                                    <div class="animal_images">
+                                        <div class="animal_photo">
+                                            <a href="#">
+                                                <img src="~/Images/HomePageImages/H2.jpg"style="border-radius: 50%;margin-left: 0% ;"   height="auto"; alt="Brahman Cattle"></a>
+                                        </div>
+                                        <div class="animal_graph">
+                                        </div>
+                                    </div>
+                                    <div class="animal_add_info">
+                                        <p>The best Breed For Hot conditions</p>
+                                    </div>
+                   </div>
+        </div>
+    
+        <div class="col-lg-3" >
+                <div class="animal_holder" style="margin-bottom: 10px;width:200px">
+
+
+                                    <div class="animal_name">
+                                        Boer Goats rr
+                                    </div>
+
+
+                                    <div class="animal_images">
+                                        <div class="animal_photo">
+                                            <a href="#">
+                                                <img src="~/Images/HomePageImages/H3.jpg"style="border-radius: 50%;margin-left: 0% ;"   height="auto"; alt="Brahman Cattle"></a>
+                                        </div>
+                                        <div class="animal_graph">
+                                        </div>
+                                    </div>
+                                    <div class="animal_add_info">
+                                        <p>The best Breed For Hot conditions</p>
+                                    </div>
+                   </div>
+        </div>
+    
+        <div class="col-lg-3" >
+               <div class="animal_holder" style="margin-bottom: 10px;width:200px">
+
+
+                                        <div class="animal_name">
+                                            Boer Goats
+                                        </div>
+
+
+                                        <div class="animal_images">
+                                            <div class="animal_photo">
+                                                <a href=""> <img src="~/Images/HomePageImages/H4.png" style="border-radius: 50%;margin-left: 0% ;"   width="100%" height="auto" alt="Pedi Sheep" ></a>
+                                            </div>
+                                            <div class="animal_graph">
+                                            </div>
+                                        </div>
+                                        <div class="animal_add_info">
+                                            <p>The best Breed For Hot conditions</p>
+                                        </div>
+                                    </div>
+        </div>
+    
+    </div>
+</div>
+
+   
+    <div class="row" id="featuresHeading">
+        
+            <!-- Contact Section -->
+            <section id="contact" class="contact-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1>Contact Section</h1>
+
+@*                                <div id="googleMap" style="width:100%;height:400px;"></div>
+
+
+<script>
+    function myMap() {
+        var mapProp = {
+            center: new google.maps.LatLng(51.508742, -0.120850),
+            zoom: 5,
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(51.508742, -0.120850),
+            map: map,
+            animation: google.maps.Animation.Drop
+        });
+
+
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1dpycOEMfZ2cL_QzVyZxtSkdC6UbspJc&callback=myMap"></script>*@
+                        </div>
+                    </div>
+                </div>
+            </section>
+           <!-- Services Section -->
+            <section id="services" class="services-section"  >
+
+                              MAP
+                       <div id="map_wrapper">
+                                    <div id="map_canvas" class="mapping"></div>
+                            </div>
+                            <style>
+                                #map_wrapper {
+                                    height: 400px;
+                                }
+
+                                #map_canvas {
+                                    width: 100%;
+                                    height: 100%;
+                                    margin-top:-100px
+                                }
+                            </style>
+                            <script>
+                                jQuery(function ($) {
+                                    // Asynchronously Load the map API 
+                                    var script = document.createElement('script');
+                                    script.src = "//maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
+                                    document.body.appendChild(script);
+                                });
+
+                                function initialize() {
+                                    var map;
+                                    var bounds = new google.maps.LatLngBounds();
+                                    var mapOptions = {
+                                        mapTypeId: 'roadmap'
+                                    };
+
+                                    // Display a map on the page
+                                    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+                                    map.setTilt(45);
+
+                                    // Multiple Markers
+                                    var markers = [
+                                        ['Tzaneen Eye, Tzaneen', -23.827543, 30.156351],
+                                        ['Polokwane Eye, Polokwane', -23.886964, 29.440461]
+
+
+                                    ];
+
+                                    // Info Window Content
+                                    var infoWindowContent = [
+                                        ['<div class="info_content">' +
+                                        '<h3>London Eye</h3>' +
+                                        '<p>The London Eye is a giant Ferris wheel situated on the banks of the River Thames. The entire structure is 135 metres (443 ft) tall and the wheel has a diameter of 120 metres (394 ft).</p>' + '</div>'],
+                                        ['<div class="info_content">' +
+                                        '<h3>Palace of Westminster</h3>' +
+                                        '<p>The Palace of Westminster is the meeting place of the House of Commons and the House of Lords, the two houses of the Parliament of the United Kingdom. Commonly known as the Houses of Parliament after its tenants.</p>' +
+                                        '</div>']
+                                    ];
+
+                                    // Display multiple markers on a map
+                                    var infoWindow = new google.maps.InfoWindow(), marker, i;
+
+                                    // Loop through our array of markers & place each one on the map  
+                                    for (i = 0; i < markers.length; i++) {
+                                        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+                                        bounds.extend(position);
+                                        marker = new google.maps.Marker({
+                                            position: position,
+                                            map: map,
+                                            title: markers[i][0]
+                                        });
+
+                                        // Allow each marker to have an info window    
+                                        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                                            return function () {
+                                                infoWindow.setContent(infoWindowContent[i][0]);
+                                                infoWindow.open(map, marker);
+                                            }
+                                        })(marker, i));
+
+                                        // Automatically center the map fitting all markers on the screen
+                                        map.fitBounds(bounds);
+                                    }
+
+                                    // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+                                    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function (event) {
+                                        this.setZoom(10);
+                                        google.maps.event.removeListener(boundsListener);
+                                    });
+
+                                }
+                            </script>
+
+
+
+                
+            </section>
+
+    </div>
+
+
+
+
+<div  style="width: 100%; margin-top: 100px;position:absolute;">
+
+
+@Html.Partial("~/Views/Shared/SharedPartialViewMenus/_PartialFooter.cshtml")
+
+
+</div>

@@ -1,0 +1,8 @@
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\Business Entities\bin\Release\BusinessEntities.dll.config
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\Business Entities\bin\Release\BusinessEntities.dll
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\Business Entities\bin\Release\BusinessEntities.pdb
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\Business Entities\bin\Release\DatabaseAccessLayer.dll
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\Business Entities\bin\Release\DatabaseAccessLayer.pdb
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\Business Entities\obj\Release\BusinessEntities.csprojResolveAssemblyReference.cache
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\Business Entities\obj\Release\BusinessEntities.dll
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\Business Entities\obj\Release\BusinessEntities.pdb

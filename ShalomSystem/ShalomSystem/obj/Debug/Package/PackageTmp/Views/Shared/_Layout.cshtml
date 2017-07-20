@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @*//bootsrap*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/BootstrapContent/css")
+    @*Ajax abrousive library*@
+
+        @Scripts.Render("~/bundles/jqueryval")
+    
+
+    @*@Scripts.Render("~/bundles/jqueryAjax")*@
+
+
+
+
+
+
+    @*Toaster notification api*@
+    @Scripts.Render("~/bundles/Toaster/JS")
+    @Scripts.Render("~/bundles/Toaster")
+    @Styles.Render("~/ToasterContent/css")
+
+    @*Morris api*@
+    @*    @Scripts.Render("~/bundles/MorrisApi/Js")
+    @Styles.Render("~/MorrisApiCss/Css")*@
+
+</head>
+<body>
+    @RenderBody()
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

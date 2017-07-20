@@ -1,0 +1,831 @@
+﻿@model ShalomSystem.Models.MyViewModel
+@using ShalomSystem;
+@using System.Drawing;
+@using System;
+@using System.IO;
+@using BusinessEntities;
+@{
+    ViewBag.Title = "RegUserDashboardIndex";
+}
+@*Morris api*@
+@Scripts.Render("~/bundles/MorrisApi/Js")
+@Styles.Render("~/MorrisApiCss/Css")
+
+@*<h2>RegUserDashboardIndex</h2>*@
+
+<link href="~/Scripts/CustomScripts/AdminPage/AdminPageCss.css" rel="stylesheet" />
+@*side bar menu*@
+<div class="row navbar-fixed-top" style="background-color: lightgray; border-bottom: solid; border-bottom-color: orangered; color: orangered">
+    <span style="font-size: 30px; cursor: pointer; margin-left: 20px" onclick="openNav()">&#9776; Menu</span>
+</div>
+
+<div class="row" style="margin-top: 50px">
+
+
+
+    <div class="col-lg-2 well" style="background-color: lightgray;">
+        <div class="modal-header myCustomHeader" style="color: white;">
+            <h4>Current User</h4>
+        </div>
+        Name
+        <input class="form-control" type="text" value="@TempData["LoginUname"]" />
+        Password
+        <input class="form-control" type="text" value="@TempData["LoginUpass"]" />
+        Access
+        <input class="form-control" type="text" value="@TempData["LoginUaccess"].ToString()" />
+        <hr />
+
+        @Html.Partial("~/Views/Shared/SharedPartialViewMenus/PartialRegDashMenu.cshtml")
+    </div>
+
+
+
+
+
+    <div class="col-lg-10" style="background-color: lightgray; border-left: solid; border-left-width: 10px; border-left-color: gray">
+        <div class="modal-header  myCustomHeader">
+            <h4>Dashboard Area</h4>
+        </div>
+
+        <hr />
+        <div class="row" style="background-color: gray">
+            <div class="col-lg-4">
+                pie
+                   <div class="panel panel-primary" style="max-height: 315px">
+                       <div class="panel-heading">
+                           <h3 id="Donut" class="panel-title"><i class="fa fa-long-arrow-right"></i>Offspring on Record</h3>
+                       </div>
+                       <div class="panel-body" style="max-height: 300px">
+
+
+
+
+                           <div id="morris-donut-chart" style="max-height: 250px; margin-top: -6%"></div>
+                           <div id="Donutlegend" class="donut-legend"></div>
+
+                       </div>
+
+                   </div>
+            </div>
+            <div class="col-lg-4">
+                bar
+                   
+                       <div class="panel panel-primary" style="max-height: 300px">
+                           <div class="panel-heading">
+                               <h3 id="BAR" class="panel-title"><i class="fa fa-long-arrow-right"></i>Weight</h3>
+                           </div>
+                           <div class="panel-body" style="max-height: 350px">
+
+                               <div id="Bar-example" style="max-height: 250px; margin-top: -6%"></div>
+
+
+                           </div>
+                       </div>
+
+            </div>
+            <div class="col-lg-4">
+                line
+                
+                     <div class="panel panel-primary" style="max-height: 300px">
+                         <div class="panel-heading">
+                             <h3 id="Line" class="panel-title"><i class="fa fa-long-arrow-right"></i>Performance By Season</h3>
+                         </div>
+                         <div class="panel-body" style="max-height: 350px">
+
+                             <div id="morris-line-chart" style="max-height: 250px; margin-top: -6%"></div>
+                         </div>
+
+                     </div>
+
+            </div>
+        </div>
+        <div class="row" style="background-color: lightgray">
+            @*Side bar*@
+            <div class="col-lg-2 modal-header" style="background-color: orangered; color: white">
+                <h3><strong>List group</strong></h3>
+
+
+
+                <div class="list-group" style="overflow: auto; max-height: 210px; margin-left: -15px; min-width: 215px;">
+
+
+                    @foreach (var AllAnimals in Model.CattleInfo)
+                    {
+                              
+                         
+                        @Ajax.ActionLink(AllAnimals.AId.ToString(), "GetMainAreaUpdate", "RegDashboard", new { AnimalId = AllAnimals.AId }, new AjaxOptions()
+                                       {
+
+                                           HttpMethod = "Post",
+                                           InsertionMode = InsertionMode.Replace,
+                                           UpdateTargetId = "MainArea"
+
+
+
+                                       }, new { @class = "list-group-item  AllAnimalList" })
+
+                                    
+                    }
+
+
+
+
+                </div>
+
+
+            </div>
+            @*section*@
+            <div class="col-lg-10" style="background-color: lightgray">
+
+                @{
+                    int TempID = 0;
+                    GenderEnum gender = GenderEnum.Not_Sure;
+                }
+
+                @*    @foreach (var animalInf in Model.CattleInfo)
+                        {
+                            TempID = animalInf.AId;
+                            gender = animalInf.AGender;
+                           
+                            
+            
+
+                            *@
+                @{
+                    string imageDataURL = "123456a1sd3asd456sadas1d3"; //MyStaticMethods.ConvertImageString(Model.cattleInfo.CImagePath);
+                }@Ajax.ActionLink(" Add New", "AddNewFunc", "RegDashboard", new { }, new AjaxOptions()
+                   {
+
+                       HttpMethod = "Post",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "AddNewPlaceHolder",
+                       OnSuccess = "success"
+
+
+                   }, new { @class = "btn btn-warning  btn-sq-lg custom  glyphicon glyphicon-search moveright" })
+                <script>
+
+                    function success() {
+                        toastr.success("Open")
+                    }
+                </script>
+
+                @*@Html.ActionLink(" Add New", "CattleAddIndex", "AddNew", null, new { id = "Addbtn", @class = "btn btn-success  btn-sq-lg custom  glyphicon glyphicon-pencil MoveRight" })*@
+                @Html.ActionLink(" Delete", "LogIndex", "LoginUser", null, new { id = "Deletebtn", @class = "btn btn-warning  btn-sq-lg  custom glyphicon glyphicon-trash" })
+                @Html.ActionLink(" Update", "LogIndex", "LoginUser", null, new { id = "Updatebtn", @class = "btn btn-warning  btn-sq-lg  custom glyphicon  glyphicon-upload" })
+                @Html.ActionLink(" Compare", "LogIndex", "LoginUser", null, new { id = "Comparebtn", @class = "btn btn-warning  btn-sq-lg custom  glyphicon glyphicon-search" })
+
+
+
+                <style>
+                    .custom {
+                        position: inherit;
+                        border-radius: 0;
+                        width: 78px !important;
+                    }
+
+                    .moveright {
+                        margin-left: -12px;
+                    }
+
+                    .btn-sq-lg {
+                        width: 150px !important;
+                        height: 35px !important;
+                    }
+                </style>
+
+
+                <div id="AddNewPlaceHolder">
+                </div>
+
+                <form class="form" id="MainArea">
+                    <h3>
+                        <p>Animal Infomation </p>
+                    </h3>
+                    <div class="row">
+
+                        @*first column*@
+                        <div class="col-lg-3">
+
+                            <div class="form-group">
+                                <p>Animal ID<span>*</span></p>
+
+                                <input  class="form-control" readonly="" type="text" name="nom" id="AID" data-rule="required" value="@Model.cattleInfo.AId"/>
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Cattle ID  <span></span></p>
+                                @*<span class="icon-case"><i class="fa fa-user"></i></span>*@
+                                <input  class="form-control"  readonly="" type="text" name="prenom" id="prenom" data-rule="required"  value="@Model.cattleInfo.CId"/>
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Breed Type  <span></span></p>
+                                @*<span class="icon-case"><i class="fa fa-envelope-o"></i></span>*@
+                                <input  class="form-control"  readonly=""  type="email" name="email" id="email" data-rule="email" value="@Model.cattleInfo.ABreed" />
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Gender(Sex)<span>*</span></p>
+                                @*<span class="icon-case"><i class="fa fa-home"></i></span>*@
+                                <input  class="form-control"  readonly="" type="text" name="society" id="society" data-rule="required"  value="@Model.cattleInfo.AGender"/>
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Age  <span></span></p>
+                                @*<span class="icon-case"><i class="fa fa-location-arrow"></i></span>*@
+                                <input  class="form-control"   readonly=""  type="text" name="adresse" id="adresse" data-rule="required" value="@Model.cattleInfo.AAge"/>
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Date of Birth  <span></span></p>
+                                @*<span class="icon-case"><i class="fa fa-map-marker"></i></span>*@
+                                @{
+                                    string fDOB = Model.cattleInfo.ADay + "/" + Model.cattleInfo.AMonth + "/" + Model.cattleInfo.AYear;
+                                }
+
+                                <input  class="form-control"  readonly="" type="text" name="postal" id="postal" data-rule="required" value="@fDOB"/>
+                                <div class="validation"></div>
+                            </div>
+
+
+
+                        </div>
+
+                        @*second column*@
+                        <div class="col-lg-3" style="background-color: none">
+
+
+
+                            <div class="form-group">
+                                <p>Colour<span></span></p>
+
+
+                                <select id="CColor" class="form-control" data-style="btn-warning">
+                                    <option value="@Model.cattleInfo.CColor">@Model.cattleInfo.CColor</option>
+
+                                </select>
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Scrotal Size (cm)<span></span></p>
+
+                                <input class="form-control" type="text"  readonly="" name="sujet" id="sujeet" data-rule="required"  value="@Model.cattleInfo.CScotralSize" />
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Status  <span></span></p>
+
+                                <select id="Status" class="form-control" data-style="btn-warning">
+                                    <option value="@Model.cattleInfo.Status">@Model.cattleInfo.Status</option>
+
+                                </select>
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Breeding Status  <span></span></p>
+
+
+                                <select id="test-period" class="form-control" data-style="btn-warning">
+                                    <option value="@Model.cattleInfo.CBreedingStatus">@Model.cattleInfo.CBreedingStatus</option>
+
+                                </select>
+
+
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Parent Identification   <span>[Father]</span></p>
+
+                                <input  class="form-control"  readonly="" type="text" name="fonction" id="function" data-rule="required"    value="@Model.cattleInfo.CParentFId"/>
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Parent Identification <span>[Mther]</span></p>
+
+                                <input  class="form-control"  readonly="" type="text" name="sujet" id="sujret" data-rule="required" value="@Model.cattleInfo.CParentMId" />
+                                <div class="validation"></div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-6" style="background-color: none">
+
+                            <div class="row">
+
+                                <div class="form-group">
+                                    <p>Profile Picture  <span></span></p>
+
+
+                                    <img src="@imageDataURL"   class="img-responsive"  style="max-width:500px;max-height:400px;min-width:500px;min-height:380px"  />
+
+
+
+
+                                    <div class="validation"></div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <p>Frame Size  <span></span></p>
+
+                                <input class="form-control" type="text" name="fonction" id="fondction" data-rule="required" value="@Model.cattleInfo.CFrameSize"/>
+                                <div class="validation"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="row" style="background-color: none">
+                        <div class="col-lg-3">
+
+
+                            <p style="color: orangered;">WEIGHT <span></span></p>
+                            <div class="form-group">
+                                <p>Birth(kg) <span></span></p>
+
+                                <input class="form-control" type="text" name="sujet" id="sujeet" data-rule="required" value="@Model.cattleInfo.CBirthWeight"  />
+                                <div class="validation"></div>
+                            </div>
+                            <div class="form-group">
+                                <p>Weaning(kg) [200d] <span></span></p>
+
+                                <input class="form-control" type="text" name="sujet" id="sujeet" data-rule="required" value="@Model.cattleInfo.CWeaningWeight" />
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Post Weaning (kg) [400d]  <span></span></p>
+
+                                <input class="form-control" type="text" name="sujet" id="sujeet" data-rule="required" value="@Model.cattleInfo.CPostWeaningWeight" />
+                                <div class="validation"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+
+                            <p style="color: orangered;">_ <span></span></p>
+                            <div class="form-group">
+                                <p>Adult 600 Day Weight  (kg) <span></span></p>
+
+                                <input class="form-control" type="text" name="sujet" id="sujeet" data-rule="required"  value="@Model.cattleInfo.CAdultSxWeight" />
+                                <div class="validation"></div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <p>Current Adult Weight  (kg)  <span></span></p>
+
+                                <input class="form-control" type="text" name="sujet" id="sujeet" data-rule="required"  value="@Model.cattleInfo.CCurrentAdultWeight" />
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Current  Weight Date Taken   <span></span></p>
+
+                                <input class="form-control" type="text" name="sujet" id="sujeet" data-rule="required"  value="@Model.cattleInfo.CCurrentWeightDateTaken" />
+                                <div class="validation"></div>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <div class="col-lg-2">
+                            <p style="color: orangered;">Progeny <span></span></p>
+                            <p>Progeny Records   <span></span></p>
+                            <div class="list-group" style="overflow: auto; max-height: 210px;">
+
+
+                                @{ Cattle off = Model.cattleInfo;
+                                   foreach (var offspringdata in off.COffSpring)
+                                   {
+                                    <a href="#" class="list-group-item" title="@offspringdata.ABreed @offspringdata.AGender">@offspringdata.AId</a>
+                                   }
+                                }
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <p style="color: orangered;">Diagnoses <span></span></p>
+
+                            <p>Diagnoses Record   <span></span></p>
+                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+
+
+                        <h5>
+                            <p>Owner Information</p>
+                        </h5>
+                        <div class="form-group" style="display: none">
+                            <p>Owner Identification Number  <span></span></p>
+
+                            <input  class="form-control" type="text" name="fonction" id="fonction" data-rule="required"  value="@Model.cattleInfo.OId" />
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Owner ID  <span></span></p>
+
+
+                            <input class="form-control" type="text" name="sujet" id="sujet" data-rule="required"   value="@Model.cattleInfo.PId"/>
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Owner Name  <span></span></p>
+
+                            <input class="form-control" type="text" name="ville" id="ville" data-rule="required"   value="@Model.cattleInfo.PName"/><input  class="form-control" type="text" name="phone" id="phone"   value="@Model.cattleInfo.PSurname"/>
+                            <div class="validation"></div>
+                        </div>
+
+                        <div style="padding-bottom: 120px">
+                            <pre>
+
+                                                   </pre>
+                        </div>
+                    </div>
+
+
+                </form>
+
+                @*}*@
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<style>
+    .donut-legend > span {
+        display: inline-block;
+        /*//margin-right: 25px;*/
+        margin-bottom: 10px;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+        .donut-legend > span:last-child {
+            margin-right: 0;
+        }
+
+        .donut-legend > span > i {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            /*margin-right: 7px;*/
+            margin-top: -3px;
+            vertical-align: middle;
+            border-radius: 1px;
+            color: orange;
+        }
+
+
+
+    p span {
+        color: #F00;
+    }
+
+    p {
+        margin: 0px;
+        font-weight: 600;
+        line-height: 2;
+        color: teal;
+        text-align: left;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*---------------------------------Modals-------------------------------*@
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content" style="width: 700px;">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h3>Current User Information</h3>
+        </div>
+        <div class="modal-body">
+
+            <form id="userProfile" class="form-horizontal" action="">
+
+                @foreach (var pperson in Model.PersonInfo)
+                {
+                                    
+                    <div class="form-group">
+                        <label class="col-lg-2 control-lable" for="Uid">Unique ID</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" readonly="" id="Uid" placeholder="" type="text" value="@pperson.PId"  />
+                        </div>
+                    </div>
+                                        
+                    <div class="form-group">
+                        <label class="col-lg-2 control-lable" for="Uname">Firstname</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" id="Uname" placeholder="" type="text" value="@pperson.PName"  />
+                        </div>
+                    </div>
+                                    
+                    <div class="form-group">
+                        <label class="col-lg-2 control-lable" for="Usname">Lastname</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" id="Usname" placeholder="" type="text" value="@pperson.PSurname"  />
+                        </div>
+                    </div>
+                                    
+                    <div class="form-group">
+                        <label class="col-lg-2 control-lable" for="Udob">Date of Birth</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" id="Udob" placeholder="" type="text" value="@pperson.Dob"  />
+                        </div>
+                    </div>
+                                                          
+                                   
+                                                          
+                }
+
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            Just Updated
+        </div>
+
+    </div>
+</div>
+
+
+<style type="text/css">
+    #mySidenav a {
+        position: absolute;
+        left: -10px;
+        transition: 0.3s;
+        padding: 15px;
+        width: 220px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        border-radius: 0 5px 5px 0;
+        margin-left: 0px;
+    }
+
+    .sidenav {
+        margin-top: -10px;
+    }
+
+    #mySidenav a:hover {
+        left: 0;
+    }
+
+    #aboutS {
+        top: 20px;
+        background-color: #4CAF50;
+    }
+
+    #bullsProfile {
+        top: 80px;
+        background-color: #2196F3;
+    }
+
+    #CowsProfile {
+        top: 140px;
+        background-color: #f44336;
+    }
+
+    #blog {
+        top: 80px;
+        background-color: #2196F3;
+    }
+
+    #projects {
+        top: 140px;
+        background-color: #f44336;
+    }
+
+    #contact {
+        top: 200px;
+        background-color: #555;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*//user profile*@
+<script>
+
+    //this is if to the user profile
+    // Get the modal
+    var modal = document.getElementById('myModal');
+    // Get the button that opens the modal
+    var btn = document.getElementById("aboutS");
+    // When the user clicks on the button, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+
+        modal.style.display = "none";
+        modalBl.style.display = "none";
+    }
+
+    //-----------------------------------------------------------------------------------------------------------------
+    //Bulls profiles 
+    var modalBl = document.getElementById('myModalBulls');
+    // Get the button that opens the modal
+    var btnBl = document.getElementById("bullsProfile");
+    // When the user clicks on the button, open the modal 
+    btnBl.onclick = function () {
+
+        modalBl.style.display = "block";
+
+
+    }
+    // Get the <span> element that closes the modal
+    var spanBl = document.getElementsByClassName("closeBl")[0];
+    // When the user clicks on <span> (x), close the modal
+    spanBl.onclick = function () {
+
+
+        modalBl.style.display = "none";
+    }
+
+    //-----------------------------------------------------------------------------------------------------------------
+
+
+    //cows Profile
+    var modalCw = document.getElementById('myModalCows');
+    // Get the button that opens the modal
+    var btnCw = document.getElementById("CowsProfile");
+    // When the user clicks on the button, open the modal 
+    btnCw.onclick = function () {
+        modalCw.style.display = "block";
+    }
+    // Get the <span> element that closes the modal
+    var spanCw = document.getElementsByClassName("closeCw")[0];
+    // When the user clicks on <span> (x), close the modal
+    spanCw.onclick = function () {
+
+        modalCw.style.display = "none";
+    }
+    //-----------------------------------------------------------------------------------------------------------------
+
+
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            modalBl.style.display = "none";
+            modalCw.style.display = "none";
+        }
+    }
+
+</script>
+
+
+
+@*//pop up*@
+<style>
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+    .closeBl {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .closeBl:hover,
+        .closeBl:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+
+    .closeCw {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .closeCw:hover,
+        .closeCw:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+</style>
+
+
+
+
+<script>
+    $(document).ready(function () {
+
+        //Get user data
+
+
+        //Get Animal data
+
+
+        //Get Animal stats
+
+
+
+
+    });
+</script>

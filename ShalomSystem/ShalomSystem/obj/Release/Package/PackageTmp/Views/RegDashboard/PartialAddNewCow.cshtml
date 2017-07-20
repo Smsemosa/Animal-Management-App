@@ -1,0 +1,480 @@
+﻿@model  ShalomSystem.Models.CattleModel
+@using BusinessEntities
+@{
+    ShalomSystem.Models.CattleModel ac = new ShalomSystem.Models.CattleModel();  
+ }
+
+<div id="AddNew" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h3>Add New  Cattle </h3>
+      
+        </div>
+        <div class="modal-body">
+            <script src="~/Scripts/jquery.validate.js"></script>
+            <script src="~/Scripts/jquery-unobtrusive-ajax.js"></script>
+            <script src="~/Scripts/jquery-validate-unobtrusive.js"></script>
+
+      @*  @using (Html.BeginForm("SubmitNew", "RegDashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+             <div class="form-group">
+                            <p>Animal ID<span>*</span></p>
+                             @Html.LabelFor(m => m.AId)
+                             @Html.TextBoxFor(m => m.AId, new { @class = "form-control", id = "AID" ,@readonly="readonly"})
+                             @Html.ValidationMessageFor(m => m.AId)
+                            
+                            <div class="validation"></div>
+                        </div>
+            <input type="submit" value="OK" />
+        }*@
+
+            <script>
+                function validateForm()
+                {
+                    return $.validator.unobtrusive.parse($('form'));
+                }
+            </script>
+           
+
+            @using (Ajax.BeginForm("SubmitNew", "RegDashboard", new AjaxOptions { 
+                HttpMethod = "Post", 
+                OnSuccess = "onNewAnimalSaveSuccess",
+                OnBegin = "validateForm",
+                OnFailure = "onNewAnimalSaveError"
+                
+            },
+                                                                new { enctype = "multipart/form-data" }
+               ))
+            { 
+                
+                
+                  @Html.ValidationSummary(true)
+
+                <div class="row">
+
+                    <style>
+                        .Red
+                         {
+                          color:red
+                        }
+                    </style>
+                    <div class="col-lg-3 col-push-3" style="background-color: none; margin-left: 2%">
+
+                        <div class="form-group">
+                            <p>Animal ID<span>*</span></p>
+                             @Html.TextBoxFor(m => m.AId, new { @class = "form-control", id = "AID" ,@readonly="readonly"})
+                             @Html.ValidationMessageFor(m => m.AId, "", new {  @class = "Red"})
+                            
+                            <div class="validation">  </div>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Cattle ID  <span></span></p>
+                             @Html.TextBoxFor(m => m.CId, new { @class = "form-control", id = "cattleid",@readonly="readonly"})
+                             @Html.ValidationMessageFor(m => m.CId, "", new {  @class = "Red"})
+                             <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Breed Type  <span></span></p>
+                               @{List<SelectListItem> breedType = ac.GetBreedType();}
+                               @Html.DropDownListFor(model => model.ABreed,breedType, "-- Select Breed --",new { @class = "form-control", id = "breedtype" })
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Gender(Sex)<span>*</span></p>
+                           @{List<SelectListItem> gender = ac.GetGender();}
+                           @Html.DropDownListFor(model => model.AGender,gender, "-- Select Gender --",new { @class = "form-control" })
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Age  <span></span></p>
+                             @Html.TextBoxFor(m => m.AAge, new { @class = "form-control", id = "age"})
+          
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Date of Birth  <span></span></p>
+                              @Html.TextBoxFor(m => m.Dob, new { @class = "form-control", id = "dob"})
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Colour<span></span></p>
+
+                               @{List<SelectListItem> colourType = ac.GetColourType();}
+                               @Html.DropDownListFor(model => model.ABreed,colourType, "-- Select Colour --",new { @class = "form-control", id = "CColor" ,required="required"})
+
+                            <div class="validation"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4 col-pull-7" style="background-color: none; margin-left: 2%">
+
+
+
+                        
+
+                        <div class="form-group">
+                            <p>Scrotal Size (cm)<span></span></p>
+                                  @Html.TextBoxFor(m => m.Dob,"cm", new { @class = "form-control", id = "scotralsize"})
+                 
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Status  <span></span></p>
+
+                            
+                               @{List<SelectListItem> statusType = ac.GetStatus();}
+                               @Html.DropDownListFor(model => model.ABreed,statusType, "-- Select Status --",new { @class = "form-control", id = "Status" })
+
+
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Breeding Status  <span></span></p>
+
+                               @{List<SelectListItem> breedingstatusType = ac.GetBreedingStatus();}
+                               @Html.DropDownListFor(model => model.ABreed,breedingstatusType, "-- Select Breeding Status --",new { @class = "form-control", id = "breedingStatus" })
+
+
+
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Parent Identification   <span>[Father]</span></p>
+                                   @Html.TextBoxFor(m => m.CParentFId,"cm", new { @class = "form-control", id = "parentIdF"})
+                           
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Parent Identification <span>[Mther]</span></p>
+                                  @Html.TextBoxFor(m => m.CParentMId,"cm", new { @class = "form-control", id = "parentIdM"})
+                            <div class="validation"></div>
+                        </div>
+                          <div class="form-group">
+                                <p>Frame Size  <span></span></p>
+                                 @{List<SelectListItem> frameSizeType = ac.GetFrameSize();}
+                                 @Html.DropDownListFor(model => model.ABreed,frameSizeType, "-- Select Frame Size --",new { @class = "form-control", id = "frameSz" })
+                                <div class="validation"></div>
+                              </div>
+
+                    </div>
+                    <div class="col-lg-4 col-push-3" style="background-color: none; margin-left: 3%">
+
+                        <div class="row">
+
+                            
+
+                             <div class="form-group col-xs-6">
+                                <p>Owner Cattle ID  <span></span></p>
+                               @Html.TextBoxFor(m => m.OId,"cm", new { @class = "form-control", id = "CattleSeq"})
+                               
+                                <div class="validation"></div>
+                            </div>
+
+
+                           
+
+                            <div class="form-group col-xs-6">
+                                <p>Owner ID  <span></span></p>
+                                @Html.TextBoxFor(m => m.PId,"cm", new { @class = "form-control", id = "OwnerID"})
+                                <div class="validation"></div>
+                            </div>
+                            <p>Owner Full name <span></span></p>
+                            <div class="form-group col-xs-6">
+                                 @Html.TextBoxFor(m => m.PName,"cm", new { @class = "form-control", id = "OwnerName"})
+                                 @Html.ValidationMessageFor(m => m.PName, "", new {  @class = "Red"})
+                                <div class="validation"></div>
+                            </div>
+                            <div class="form-group col-xs-6">
+                              @Html.TextBoxFor(m => m.PSurname,"cm", new { @class = "form-control", id = "OwnerSurname"})
+                                <div class="validation"></div>
+                            </div>
+                            <br />
+
+                          
+
+
+
+                            <div class="form-group">
+                                <p>Upload Profile Picture  <span></span></p>
+                                <img src="" id="uploadedImage" class="img-responsive" style="max-width: 350px; max-height: 250px; min-width: 300px; min-height: 180px" />
+                                @Html.TextBoxFor(m => m.Imagebase64, new { @class = "form-control hidden", id = "uploadedBinary" })
+
+
+                                <div class="validation"></div>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label class="input-group-btn">
+                                        <span class="btn btn-primary ">
+                                            <span class="glyphicon glyphicon-upload"></span>Browse&hellip;
+                                            <input id="file" name="file" type="file" style="display: none;">
+                                        </span>
+                                    </label>
+                                    <input type="text" class="form-control" readonly="">
+                                </div>
+
+                            </div>
+
+
+                            <script>
+                                $('#file').change(function (event) {
+                                    var pathBin = "";
+                                    // We can attach the `fileselect` event to all file inputs on the page
+                                    $(document).on('change', ':file', function () {
+                                        var input = $(this);
+                                        var numFiles = input.get(0).files ? input.get(0).files.length : 1;
+
+                                        var label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+
+                                        input.trigger('fileselect', [numFiles, label]);
+
+                                    });
+
+                                    // We can watch for our custom `fileselect` event like this
+                                    var count = 0;
+                                    if (count < 1) {
+                                        $(':file').on('fileselect', function (event, numFiles, label) {
+
+                                            if (count < 1) {
+
+                                                var input = $(this).parents('.input-group').find(':text');
+                                                //uses tenary operators
+                                                var log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+                                                if (log) {
+
+                                                    count++;
+
+                                                    if (input.length) {
+                                                        pathBin = log
+                                                        console.log(pathBin);
+
+                                                        //extension viable in this application
+                                                        var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+                                                        var ff = (pathBin).split('.')
+
+                                                        var i;
+                                                        var state = false;
+
+                                                        //check file extention ang give user feed back 
+                                                        for (i = 0; i < fileExtension.length; i++) {
+
+                                                            if (ff[ff.length - 1] + '' === fileExtension[i] + '') {
+
+                                                                state = true; input.val(log);
+                                                                break;
+                                                            }
+                                                            else if (Number(i) == Number(fileExtension.length - 1) && state + "" === "false") {
+                                                                input.val("");
+                                                                toastr.error("Select the Correct file type: [eg] " + fileExtension)
+                                                            }
+
+                                                        }
+                                                        state = false;
+
+                                                    } else {
+                                                        if (log) { };
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    }
+                                    else {
+                                        // alert("No access");
+                                    }
+
+
+                                    var r = URL.createObjectURL(event.target.files[0]);
+                                    var canvas = document.createElement("canvas");
+                                    var ctx = canvas.getContext("2d");
+                                    var img = new Image();
+
+                                    img.onload = function () {
+                                        //divide the size of image to make it smaller
+                                        var w = img.width / 2;
+                                        var h = img.height / 2;
+
+                                        //image size
+                                        canvas.width = w;
+                                        canvas.height = h;
+
+                                        //final drawing of image after resize
+                                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+
+
+                                        var data = canvas.toDataURL("image/jpeg");
+
+                                        //display images 
+                                        $("#uploadedImage").fadeIn("fast").attr('src', data);
+                                        //image path
+                                        $("#uploadedBinary").fadeIn("fast").attr('value', data);
+                                        //display image 
+                                        //  $("#mmm").fadeIn("fast").attr('src', data);
+                                    };
+                                    img.src = r;
+                                });
+                            </script>
+
+                        </div>
+
+                    </div>
+                </div>
+                <hr />
+             
+             
+                <div class="row" style="background-color: none">
+                    <div class="col-lg-3">
+
+
+                        <p style="color: orangered;">WEIGHT <span></span></p>
+                        <div class="form-group">
+                            <p>Birth(kg) <span></span></p>
+
+                            <input class="form-control" type="text" name="sujet" id="birthweight" data-rule="required" value="" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            <p>Weaning(kg) [200d] <span></span></p>
+
+                            <input class="form-control" type="text" name="sujet" id="weaningweight" data-rule="required" value="" />
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Post Weaning (kg) [400d]  <span></span></p>
+
+                            <input class="form-control" type="text" name="sujet" id="postweaning" data-rule="required" value="" />
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+
+                        <p style="color: orangered;">_ <span></span></p>
+                        <div class="form-group">
+                            <p>Adult 600 Day Weight  (kg) <span></span></p>
+
+                            <input class="form-control" type="text" name="sujet" id="adultweight" data-rule="required" value="" />
+                            <div class="validation"></div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <p>Current Adult Weight  (kg)  <span></span></p>
+
+                            <input class="form-control" type="text" name="sujet" id="currentadulttweight" data-rule="required" value="" />
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <p>Current  Weight Date Taken   <span></span></p>
+
+                            <input class="form-control" type="text" name="sujet" id="currentadulttweightdate" data-rule="required" value="" />
+                            <div class="validation"></div>
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="col-lg-2">
+                        <p style="color: orangered;">Progeny <span></span></p>
+                        <p>Progeny Records   <span></span></p>
+
+                    </div>
+                    <div class="col-lg-4">
+                        <p style="color: orangered;">Diagnoses <span></span></p>
+
+                        <p>Diagnoses Record   <span></span></p>
+                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    stervanos app
+                   
+
+                </div>
+
+
+
+                <button type="submit" value="Save" class="btn btn-success  btn-sq-lg  custom  glyphicon  glyphicon-upload pull-right">
+                    Save
+                </button>
+                <br />
+                <br />
+            }
+
+            <script>
+
+                function onNewAnimalSaveSuccess(data)
+                {
+                    if (!$.trim(data))
+                    {
+                        toastr.info("! " + data)
+                    }
+                    else
+                    {
+                        toastr.error("! Validation " + data)
+                    }
+                 
+
+                }
+                function onNewAnimalSaveError(data)
+                {
+                    toastr.error("! " + data)
+
+                }
+            </script>
+        </div>
+        <div class="modal-footer">
+            @*@Html.ActionLink(" Reset", "LogIndex", "LoginUser", null, new { id = "Deletebtn", @class = "btn btn-warning  btn-sq-lg  custom glyphicon glyphicon-trash pull-right"})*@
+            @*@Html.ActionLink(" Save 1", "LogIndex", "LoginUser", null, new { id = "Updatebtn", @class = "btn btn-success  btn-sq-lg  custom glyphicon  glyphicon-upload" })*@
+
+
+            ---------------------------------------
+
+
+         
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    var modal = document.getElementById('AddNew');
+    var span = document.getElementsByClassName("close")[0];
+    $("document").ready(function () {
+
+        modal.style.display = "block";
+
+
+
+    });
+    span.onclick = function () {
+
+        modal.style.display = "none";
+        modalBl.style.display = "none";
+    }
+
+
+</script>

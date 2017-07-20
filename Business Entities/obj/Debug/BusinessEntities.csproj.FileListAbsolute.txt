@@ -1,0 +1,24 @@
+C:\Users\StervanosMatomeSemos\Desktop\ShalomFarmApplication\Business Entities\bin\Debug\BusinessEntities.dll
+C:\Users\StervanosMatomeSemos\Desktop\ShalomFarmApplication\Business Entities\bin\Debug\BusinessEntities.pdb
+C:\Users\StervanosMatomeSemos\Desktop\ShalomFarmApplication\Business Entities\obj\Debug\BusinessEntities.dll
+C:\Users\StervanosMatomeSemos\Desktop\ShalomFarmApplication\Business Entities\obj\Debug\BusinessEntities.pdb
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\Business Entities\bin\Debug\BusinessEntities.dll
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\Business Entities\bin\Debug\BusinessEntities.pdb
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\Business Entities\obj\Debug\BusinessEntities.dll
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\Business Entities\obj\Debug\BusinessEntities.pdb
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\Business Entities\bin\Debug\BusinessEntities.dll.config
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\Business Entities\bin\Debug\EntityFramework.dll
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\Business Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\Business Entities\bin\Debug\EntityFramework.xml
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\Business Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\Business Entities\bin\Debug\DatabaseAccessLayer.dll
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\Business Entities\bin\Debug\DatabaseAccessLayer.pdb
+C:\Users\StervanosMatomeSemos\Desktop\Core Application\Business Entities\obj\Debug\BusinessEntities.csprojResolveAssemblyReference.cache
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\Business Entities\obj\Debug\BusinessEntities.csprojResolveAssemblyReference.cache
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\Business Entities\obj\Debug\BusinessEntities.dll
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\Business Entities\obj\Debug\BusinessEntities.pdb
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\Business Entities\bin\Debug\BusinessEntities.dll.config
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\Business Entities\bin\Debug\BusinessEntities.dll
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\Business Entities\bin\Debug\BusinessEntities.pdb
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\Business Entities\bin\Debug\DatabaseAccessLayer.dll
+C:\Users\StervanosMatomeSemos\Desktop\TechShifter-Projects\Business Entities\bin\Debug\DatabaseAccessLayer.pdb
